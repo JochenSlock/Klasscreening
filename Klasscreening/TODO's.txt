@@ -1,0 +1,5 @@
+﻿In deze file kunnen we de TO DO's bijhouden (soms denk je aan iets (kleins) en vergeet je het als je het niet direct uitvoerd.
+
+
+1. Logging
+2.
