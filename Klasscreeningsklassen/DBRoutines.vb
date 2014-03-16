@@ -163,28 +163,43 @@ Public Class DBRoutines
         Dim selectFromTblCommand = New OleDbCommand("SELECT * FROM TBL_Klas", GlobalVariables.conn)
         Dim reader As OleDbDataReader = selectFromTblCommand.ExecuteReader()
         Dim klasLijst As New List(Of Klas)
-        Try
-            While reader.Read()
 
-                klasLijst.Add(New Klas( _
-                    Convert.ToInt32(reader(0)), _
-                    Convert.ToString(reader(1)), _
-                    Convert.ToInt32(reader(2)), _
-                    Convert.ToInt32(reader(3)), _
-                    Convert.ToDateTime(reader(4)), _
-                    Convert.ToDateTime(reader(5)))
-                )
 
+
+            Try
+                While reader.Read()
+
+
+                If reader.IsDBNull(5) Then
+                    klasLijst.Add(New Klas( _
+                        Convert.ToInt32(reader(0)), _
+                        Convert.ToString(reader(1)), _
+                        Convert.ToInt32(reader(2)), _
+                        Convert.ToInt32(reader(3)), _
+                        Convert.ToDateTime(reader(4)), _
+                        Nothing))
+
+                Else
+
+                    klasLijst.Add(New Klas( _
+                        Convert.ToInt32(reader(0)), _
+                        Convert.ToString(reader(1)), _
+                        Convert.ToInt32(reader(2)), _
+                        Convert.ToInt32(reader(3)), _
+                        Convert.ToDateTime(reader(4)), _
+                        Convert.ToDateTime(reader(5)))
+                    )
+                End If
             End While
 
-            reader.Close()
+                reader.Close()
 
-        Catch ex As Exception
-            'MessageBox.Show(ex.Message, "Database Error tijdens laden van Klassen.", MessageBoxButtons.OK, MessageBoxIcon.Error)
-        Finally
-            selectFromTblCommand.Dispose()
-        End Try
+            Catch ex As Exception
+                'MessageBox.Show(ex.Message, "Database Error tijdens laden van Klassen.", MessageBoxButtons.OK, MessageBoxIcon.Error)
+            Finally
+                selectFromTblCommand.Dispose()
+            End Try
 
-        Return klasLijst
+            Return klasLijst
     End Function
 End Class

@@ -4,8 +4,8 @@
     Public Property Deelnemer As Integer
     Public Property Lokaal As Integer
     Public Property StartTijdStip As Date
-    Public Property StopTijdStip As Date
-    Public Sub New(id As Integer, naam As String, deelnemer As Integer, lokaal As Integer, starttijdstip As Date, stoptijdstip As Date)
+    Public Property StopTijdStip As Nullable(Of Date)
+    Public Sub New(id As Integer, naam As String, deelnemer As Integer, lokaal As Integer, starttijdstip As Date, stoptijdstip As Nullable(Of Date))
         Me.ID = id
         Me.Naam = naam
         Me.Deelnemer = deelnemer

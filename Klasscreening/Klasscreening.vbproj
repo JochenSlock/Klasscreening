@@ -85,6 +85,12 @@
       <DependentUpon>FrmKlasscreening.vb</DependentUpon>
       <SubType>Form</SubType>
     </Compile>
+    <Compile Include="FrmKlassen.Designer.vb">
+      <DependentUpon>FrmKlassen.vb</DependentUpon>
+    </Compile>
+    <Compile Include="FrmKlassen.vb">
+      <SubType>Form</SubType>
+    </Compile>
     <Compile Include="FrmLeerlingen.designer.vb">
       <DependentUpon>FrmLeerlingen.vb</DependentUpon>
     </Compile>
@@ -137,6 +143,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="FrmKlasscreening.resx">
       <DependentUpon>FrmKlasscreening.vb</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="FrmKlassen.resx">
+      <DependentUpon>FrmKlassen.vb</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="FrmLeerlingen.resx">
       <DependentUpon>FrmLeerlingen.vb</DependentUpon>

@@ -121,31 +121,31 @@ Partial Class frmMain
         'tmiLeerling
         '
         Me.tmiLeerling.Name = "tmiLeerling"
-        Me.tmiLeerling.Size = New System.Drawing.Size(152, 22)
+        Me.tmiLeerling.Size = New System.Drawing.Size(135, 22)
         Me.tmiLeerling.Text = "Leerling"
         '
         'tmiLeerkracht
         '
         Me.tmiLeerkracht.Name = "tmiLeerkracht"
-        Me.tmiLeerkracht.Size = New System.Drawing.Size(152, 22)
+        Me.tmiLeerkracht.Size = New System.Drawing.Size(135, 22)
         Me.tmiLeerkracht.Text = "Leerkracht"
         '
         'tmiLokaal
         '
         Me.tmiLokaal.Name = "tmiLokaal"
-        Me.tmiLokaal.Size = New System.Drawing.Size(152, 22)
+        Me.tmiLokaal.Size = New System.Drawing.Size(135, 22)
         Me.tmiLokaal.Text = "Lokaal"
         '
         'ToolStripSeparator5
         '
         Me.ToolStripSeparator5.Name = "ToolStripSeparator5"
-        Me.ToolStripSeparator5.Size = New System.Drawing.Size(149, 6)
+        Me.ToolStripSeparator5.Size = New System.Drawing.Size(132, 6)
         '
         'tmiOnderhoud
         '
         Me.tmiOnderhoud.DropDownItems.AddRange(New System.Windows.Forms.ToolStripItem() {Me.tmiActiefstatus, Me.tmiKlasnamen})
         Me.tmiOnderhoud.Name = "tmiOnderhoud"
-        Me.tmiOnderhoud.Size = New System.Drawing.Size(152, 22)
+        Me.tmiOnderhoud.Size = New System.Drawing.Size(135, 22)
         Me.tmiOnderhoud.Text = "Onderhoud"
         '
         'tmiActiefstatus
