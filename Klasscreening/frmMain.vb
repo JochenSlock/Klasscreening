@@ -6,9 +6,9 @@ Public Class frmMain
     Public leerkrachtenLijst As New List(Of Leerkracht)
     Public leerlingenLijst As New List(Of Leerling)
     Public klassenLijst As New List(Of Klas)
-    Public klasNaamLijst As New Dictionary(Of Integer, String)
-    Public klasLokalenLijst As New Dictionary(Of Integer, String)
-    Public actiefLijst As New Dictionary(Of Integer, String)
+    Public klasNaamLijst As New List(Of KlasNaam)
+    Public klasLokalenLijst As New List(Of Lokaal)
+    Public actiefLijst As New List(Of Actief)
     Public verhuisLijst As New List(Of verhuis)
 
     Private Sub OphalenLijsten()
@@ -98,12 +98,13 @@ Public Class frmMain
 
 
     Private Sub tmiSamenstellenKlassen_Click(sender As System.Object, e As System.EventArgs) Handles tmiSamenstellenKlassen.Click
+
         Dim openstaandeLijst = From klas In klassenLijst
         Where klas.StopTijdStip Is Nothing
         Join leerling In leerlingenLijst On klas.Deelnemer Equals leerling.ID
-        Select New Verhuis(leerling.ID, klas.Naam, klas.Naam, leerling.VoorNaam, leerling.FamilieNaam)
+        Select New Verhuis(leerling.ID, klas.Naam)
 
-        Dim frmKlassen As New FrmKlassen(openstaandeLijst.ToList, klasNaamLijst)
+        Dim frmKlassen As New FrmKlassen(openstaandeLijst.ToList, klasNaamLijst, leerlingenLijst, leerkrachtenLijst)
         frmKlassen.MdiParent = Me
         frmKlassen.Show()
     End Sub

@@ -6,6 +6,10 @@
         Me.ID = id
         Me.Naam = naam
     End Sub
+    Public Overrides Function ToString() As String
+        Return Naam
+
+    End Function
     Public Shared Function updateOLEDB(ByRef klasnaam As KlasNaam) As OleDb.OleDbCommand
         Dim commandText As String = "UPDATE LST_Klasnaam SET" & vbCrLf & _
                                     "Naam = @Naam" & vbCrLf &

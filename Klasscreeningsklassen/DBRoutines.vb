@@ -1,13 +1,13 @@
 ﻿Imports System.Data.OleDb
 
 Public Class DBRoutines
-    Public Shared Function LaadActief() As Dictionary(Of Integer, String)
+    Public Shared Function LaadActief() As List(Of Actief)
         Dim selectFromTblCommand = New OleDbCommand("SELECT * FROM LST_Actief", GlobalVariables.conn)
         Dim reader As OleDbDataReader = selectFromTblCommand.ExecuteReader()
-        Dim actiefDict As New Dictionary(Of Integer, String)
+        Dim actiefList As New List(Of Actief)
         Try
             While reader.Read()
-                actiefDict.Add(Convert.ToInt32(reader(0)), Convert.ToString(reader(1)))
+                actiefList.Add(New Actief(Convert.ToInt32(reader(0)), Convert.ToString(reader(1))))
             End While
 
             reader.Close()
@@ -18,15 +18,15 @@ Public Class DBRoutines
             selectFromTblCommand.Dispose()
         End Try
 
-        Return actiefDict
+        Return actiefList
     End Function
-    Public Shared Function LaadLokalen() As Dictionary(Of Integer, String)
+    Public Shared Function LaadLokalen() As List(Of Lokaal)
         Dim selectFromTblCommand = New OleDbCommand("SELECT * FROM LST_Lokalen", GlobalVariables.conn)
         Dim reader As OleDbDataReader = selectFromTblCommand.ExecuteReader()
-        Dim lokaalDict As New Dictionary(Of Integer, String)
+        Dim lokaalList As New List (Of Lokaal)
         Try
             While reader.Read()
-                lokaalDict.Add(Convert.ToInt32(reader(0)), Convert.ToString(reader(1)))
+                lokaalList.Add(New Lokaal(Convert.ToInt32(reader(0)), Convert.ToInt32(reader(1)), Convert.ToString(reader(2))))
             End While
 
             reader.Close()
@@ -36,15 +36,15 @@ Public Class DBRoutines
         Finally
             selectFromTblCommand.Dispose()
         End Try
-        Return lokaalDict
+        Return lokaalList
     End Function
-    Public Shared Function LaadKlasNamen() As Dictionary(Of Integer, String)
+    Public Shared Function LaadKlasNamen() As List(Of KlasNaam)
         Dim selectFromTblCommand = New OleDbCommand("SELECT * FROM LST_Klasnaam", GlobalVariables.conn)
         Dim reader As OleDbDataReader = selectFromTblCommand.ExecuteReader()
-        Dim klasNaamDict As New Dictionary(Of Integer, String)
+        Dim klasNaamList As New List(Of KlasNaam)
         Try
             While reader.Read()
-                klasNaamDict.Add(Convert.ToInt32(reader(0)), Convert.ToString(reader(1)))
+                klasNaamList.Add(New KlasNaam(Convert.ToInt32(reader(0)), Convert.ToString(reader(1))))
             End While
 
             reader.Close()
@@ -55,9 +55,9 @@ Public Class DBRoutines
             selectFromTblCommand.Dispose()
         End Try
 
-        Return klasNaamDict
+        Return klasNaamList
     End Function
-    Public Shared Function LaadLeerlingen(actiefLijst As Dictionary(Of Integer, String)) As List(Of Leerling)
+    Public Shared Function LaadLeerlingen(actiefLijst As List(Of Actief)) As List(Of Leerling)
         Dim selectFromTblCommand As New OleDbCommand("SELECT * FROM TBL_Leerling", GlobalVariables.conn)
         Dim leerlingLijst As New List(Of Leerling)
         Try
@@ -82,8 +82,7 @@ Public Class DBRoutines
                 Convert.ToBoolean(reader(14)), _
                 Convert.ToBoolean(reader(15)), _
                 Convert.ToBoolean(reader(16)),
-                actiefLijst.Item(Convert.ToInt32(reader(17))) _
-                ))
+                Convert.ToInt32(reader(17))))
             End While
             'Convert.ToString(reader(11)), _
             reader.Close()
@@ -94,7 +93,7 @@ Public Class DBRoutines
         End Try
         Return leerlingLijst
     End Function
-    Public Shared Function LaadLeerling(actiefLijst As Dictionary(Of Integer, String), ByVal waar As String) As Leerling
+    Public Shared Function LaadLeerling(actiefLijst As List(Of Actief), ByVal waar As String) As Leerling
         Dim selectFromTblCommand As New OleDbCommand("SELECT * FROM TBL_Leerling " & waar, GlobalVariables.conn)
         Dim leerling As Leerling
         Try
@@ -119,8 +118,7 @@ Public Class DBRoutines
             Convert.ToBoolean(reader(14)), _
             Convert.ToBoolean(reader(15)), _
             Convert.ToBoolean(reader(16)),
-            actiefLijst.Item(Convert.ToInt32(reader(17))) _
-            )
+            Convert.ToInt32(reader(17)))
             'Convert.ToString(reader(11)), _
             reader.Close()
         Catch ex As Exception
@@ -170,24 +168,22 @@ Public Class DBRoutines
                 While reader.Read()
 
 
-                If reader.IsDBNull(5) Then
+                If reader.IsDBNull(4) Then
                     klasLijst.Add(New Klas( _
                         Convert.ToInt32(reader(0)), _
-                        Convert.ToString(reader(1)), _
+                        Convert.ToInt32(reader(1)), _
                         Convert.ToInt32(reader(2)), _
-                        Convert.ToInt32(reader(3)), _
-                        Convert.ToDateTime(reader(4)), _
+                        Convert.ToDateTime(reader(3)), _
                         Nothing))
 
                 Else
 
                     klasLijst.Add(New Klas( _
                         Convert.ToInt32(reader(0)), _
-                        Convert.ToString(reader(1)), _
+                        Convert.ToInt32(reader(1)), _
                         Convert.ToInt32(reader(2)), _
-                        Convert.ToInt32(reader(3)), _
-                        Convert.ToDateTime(reader(4)), _
-                        Convert.ToDateTime(reader(5)))
+                        Convert.ToDateTime(reader(3)), _
+                        Convert.ToDateTime(reader(4)))
                     )
                 End If
             End While

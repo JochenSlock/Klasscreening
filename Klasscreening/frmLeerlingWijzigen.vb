@@ -5,18 +5,18 @@ Public Class frmLeerlingWijzigen
 
     Inherits FrmLeerlingToevoegenWijzigen
     Private _leerling As Leerling
-    Private _actieflijst As Dictionary(Of Integer, String)
+    Private _actieflijst As List(Of Actief)
 
     Public Delegate Sub WijzigenLeerling()
     Public Event leerlingGewijzigd As WijzigenLeerling
 
-    Public Sub New(ByRef leerling As Leerling, actieflijst As Dictionary(Of Integer, String))
+    Public Sub New(ByRef leerling As Leerling, actieflijst As List(Of Actief))
 
         InitializeComponent()
         Me._leerling = leerling
         Me._actieflijst = actieflijst
 
-        cboLeerlingActief.Items.AddRange(actieflijst.Values.ToArray)
+        cboLeerlingActief.Items.AddRange(actieflijst.ToArray)
 
 
         With _leerling

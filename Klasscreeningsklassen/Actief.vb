@@ -5,8 +5,6 @@
         Me.ID = id
         Me.Omschrijving = Omschrijving
     End Sub
-
-
     Public Shared Function insertOLEDB(ByRef actief As Actief) As OleDb.OleDbCommand
         Dim commandText As String
 
@@ -39,5 +37,8 @@
         End With
         Dim tekst As String = command.CommandText
         Return command
+    End Function
+    Public Overrides Function ToString() As String
+        Return Omschrijving
     End Function
 End Class

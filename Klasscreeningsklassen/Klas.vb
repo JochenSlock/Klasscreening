@@ -1,15 +1,13 @@
 ﻿Public Class Klas
     Public Property ID As Integer
-    Public Property Naam As String
+    Public Property Naam As Integer
     Public Property Deelnemer As Integer
-    Public Property Lokaal As Integer
     Public Property StartTijdStip As Date
     Public Property StopTijdStip As Nullable(Of Date)
-    Public Sub New(id As Integer, naam As String, deelnemer As Integer, lokaal As Integer, starttijdstip As Date, stoptijdstip As Nullable(Of Date))
+    Public Sub New(id As Integer, naam As Integer, deelnemer As Integer, starttijdstip As Date, stoptijdstip As Nullable(Of Date))
         Me.ID = id
         Me.Naam = naam
         Me.Deelnemer = deelnemer
-        Me.Lokaal = lokaal
         Me.StartTijdStip = starttijdstip
         Me.StopTijdStip = stoptijdstip
     End Sub
@@ -29,7 +27,6 @@
 
             command.Parameters.AddWithValue("@Naam", .Naam)
             command.Parameters.AddWithValue("@Deelnemer", .Deelnemer)
-            command.Parameters.AddWithValue("@Lokaal", .Lokaal)
             command.Parameters.AddWithValue("@StartTijdStip", .StartTijdStip)
             command.Parameters.AddWithValue("@StopTijdStip", .StopTijdStip)
             command.Parameters.AddWithValue("@ID", .ID)
@@ -55,7 +52,6 @@
         With klas
             command.Parameters.AddWithValue("@Naam", .Naam)
             command.Parameters.AddWithValue("@Deelnemer", .Deelnemer)
-            command.Parameters.AddWithValue("@Lokaal", .Lokaal)
             command.Parameters.AddWithValue("@StartTijdStip", .StartTijdStip)
             command.Parameters.AddWithValue("@StopTijdStip", .StopTijdStip)
         End With

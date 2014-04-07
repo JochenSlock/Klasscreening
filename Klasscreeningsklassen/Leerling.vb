@@ -14,13 +14,13 @@
     Public Property Pestslachtoffer As Boolean
     Public Property Anderstalig As Boolean
     Public Property Bisser As Boolean
-    Public Property Actief As String
+    Public Property Actief As Integer
 
     Public Sub New(ByVal id As Integer, ByVal voornaam As String, ByVal familienaam As String, ByVal geboortedatum As Date, ByVal inschrijvingsdatum As Date, _
         ByVal os_ass As Boolean, ByVal os_adhd As Boolean, ByVal os_gts As Boolean, ByVal ls_dyslexie As Boolean, ByVal ls_dysorthografie As Boolean, _
         ByVal ls_dyscalculie As Boolean, ByVal ls_andere As String, _
         ByVal leervoorsprong As Boolean, ByVal pestdader As Boolean, ByVal pestslachtoffer As Boolean, _
-        ByVal anderstalig As Boolean, ByVal bisser As Boolean, ByVal actief As String)
+        ByVal anderstalig As Boolean, ByVal bisser As Boolean, ByVal actief As Integer)
         Me.ID = id
         Me.VoorNaam = voornaam
         Me.FamilieNaam = familienaam
@@ -45,7 +45,7 @@
 
     End Sub
 
-    Public Shared Function updateOLEDB(ByVal leerling As Leerling, ByVal actiefLijst As Dictionary(Of Integer, String)) As OleDb.OleDbCommand
+    Public Shared Function updateOLEDB(ByVal leerling As Leerling, ByVal actiefLijst As List(Of Actief)) As OleDb.OleDbCommand
 
         Dim commandText As String = "UPDATE TBL_Leerling SET" & vbCrLf & _
                                     "Voornaam = @Voornaam," & vbCrLf & "Familienaam = @Familienaam," & vbCrLf & "Geboortedatum = @Geboortedatum," & vbCrLf & "Inschrijvingsdatum = @Inschrijvingsdatum," & _
@@ -75,7 +75,7 @@
             command.Parameters.AddWithValue("@Pestslachtoffer", .Pestslachtoffer)
             command.Parameters.AddWithValue("@Anderstalig", .Anderstalig)
             command.Parameters.AddWithValue("@Bisser", .Bisser)
-            command.Parameters.AddWithValue("@Actief", actiefLijst.FirstOrDefault(Function(x) (x.Value = .Actief)).Key)
+            command.Parameters.AddWithValue("@Actief", .Actief)
             command.Parameters.AddWithValue("@ID", .ID)
 
 
@@ -85,7 +85,7 @@
 
     End Function
 
-    Public Shared Function insertOLEDB(ByVal leerling As Leerling, ByVal actiefLijst As Dictionary(Of Integer, String)) As OleDb.OleDbCommand
+    Public Shared Function insertOLEDB(ByVal leerling As Leerling, ByVal actiefLijst As List(Of Actief)) As OleDb.OleDbCommand
         Dim commandText As String
 
         commandText = "INSERT INTO TBL_Leerling " & _
@@ -119,7 +119,7 @@
             command.Parameters.AddWithValue("@Pestslachtoffer", .Pestslachtoffer)
             command.Parameters.AddWithValue("@Anderstalig", .Anderstalig)
             command.Parameters.AddWithValue("@Bisser", .Bisser)
-            command.Parameters.AddWithValue("@Actief", actiefLijst.FirstOrDefault(Function(x) (x.Value = .Actief)).Key)
+            command.Parameters.AddWithValue("@Actief", .Actief)
         End With
 
         Return command

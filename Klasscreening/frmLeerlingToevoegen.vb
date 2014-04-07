@@ -2,22 +2,22 @@
 Imports System.Data.OleDb
 
 Public Class frmLeerlingToevoegen
-
     Inherits FrmLeerlingToevoegenWijzigen
-    Private _actiefLijst As Dictionary(Of Integer, String)
+
+    Private _actiefLijst As List(Of Actief)
     Private _leerlingenLijst As List(Of Leerling)
 
     Public Delegate Sub ToevoegenLeerling(leerling As Leerling)
     Public Event leerlingToegevoegd As ToevoegenLeerling
 
     'Public Sub New(leerlingenLijst As List(Of Leerling), actieflijst As Dictionary(Of Integer, String))
-    Public Sub New(actieflijst As Dictionary(Of Integer, String))
+    Public Sub New(actieflijst As List(Of Actief))
 
         InitializeComponent()
         Me._actiefLijst = actieflijst
         'Me._leerlingenLijst = leerlingenLijst
 
-        cboLeerlingActief.Items.AddRange(actieflijst.Values.ToArray)
+        cboLeerlingActief.Items.AddRange(actieflijst.ToArray)
         Me.Text = "Toevoegen van een nieuwe leerling"
     End Sub
 

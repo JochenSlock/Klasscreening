@@ -4,19 +4,21 @@ Imports Klasscreeningsklassen
 Public Class frmLeerlingen
 
     Private leerlingLijst As List(Of Leerling)
-    Private actiefLijst As Dictionary(Of Integer, String)
+    Private actiefLijst As List(Of Actief)
     Private WithEvents frmleerlingtoevoegen As frmLeerlingToevoegen
     Private WithEvents frmleerlingenwijzigen As frmLeerlingWijzigen
 
-    Public Sub New(leerlingLijst As List(Of Leerling), actieflijst As Dictionary(Of Integer, String))
+    Public Sub New(leerlingLijst As List(Of Leerling), actieflijst As List(Of Actief))
 
         InitializeComponent()
         Me.leerlingLijst = leerlingLijst
         Me.actiefLijst = actieflijst
 
-        ComboBox1.Items.AddRange(actieflijst.Values.ToArray)
+        ComboBox1.Items.AddRange(actieflijst.ToArray)
         ComboBox1.Items.Add("*")
         ComboBox1.SelectedIndex = 0
+
+
 
     End Sub
     Private Sub btnLeerlingToevoegen_Click(ByVal sender As System.Object, ByVal e As System.EventArgs) Handles btnLeerlingToevoegen.Click
@@ -73,6 +75,8 @@ Public Class frmLeerlingen
             .Columns("Bisser").DisplayIndex = 16
             .Columns("Actief").DisplayIndex = 17
         End With
+
+        dgvLeerlingen.Refresh()
     End Sub
 
     Private Sub btnLeerlingVerwijderen_Click(sender As System.Object, e As System.EventArgs) Handles btnLeerlingVerwijderen.Click
@@ -84,9 +88,9 @@ Public Class frmLeerlingen
 
 
             If result = DialogResult.Yes Then
-                Dim lln = leerlingLijst.Where(Function(x) (x.ID = dgvLeerlingen.SelectedCells(0).Value)).ToArray.Distinct
+                Dim lln = leerlingLijst.Where(Function(x) (x.ID = dgvLeerlingen.SelectedCells(0).Value)).First
 
-                Dim deleteFromTblCommand As New OleDbCommand("DELETE FROM TBL_Leerling WHERE ID =" & lln(0).ID.ToString, GlobalVariables.conn)
+                Dim deleteFromTblCommand As New OleDbCommand("DELETE FROM TBL_Leerling WHERE ID =" & lln.ID.ToString, GlobalVariables.conn)
 
                 Dim connection As Data.OleDb.OleDbConnection = Klasscreeningsklassen.GlobalVariables.conn
                 connection.Open()
@@ -94,7 +98,7 @@ Public Class frmLeerlingen
                 deleteFromTblCommand.ExecuteNonQuery()
                 connection.Close()
 
-                leerlingLijst.Remove(lln(0))
+                leerlingLijst.Remove(lln)
                 UpdateLeerlingenTabel()
 
             End If
