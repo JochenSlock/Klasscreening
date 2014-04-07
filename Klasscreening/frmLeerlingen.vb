@@ -36,11 +36,9 @@ Public Class frmLeerlingen
 
         If dgvLeerlingen.SelectedRows IsNot Nothing Then
 
-            Dim lln = leerlingLijst.Where(Function(x) (x.ID = dgvLeerlingen.SelectedCells(0).Value)).ToArray
-            'Where(ll.ID = dgvLeerlingen.SelectedCells(0).Value)
-            'Select CType(ll, Leerling)
+            Dim lln As Leerling = dgvLeerlingen.SelectedRows(0).DataBoundItem()
 
-            frmleerlingenwijzigen = New frmLeerlingWijzigen(lln(0), actiefLijst)
+            frmleerlingenwijzigen = New frmLeerlingWijzigen(lln, actiefLijst)
             frmleerlingenwijzigen.ShowDialog()
         End If
 
@@ -54,7 +52,27 @@ Public Class frmLeerlingen
     End Sub
 
     Public Sub UpdateLeerlingenTabel() Handles MyBase.Load, frmleerlingenwijzigen.leerlingGewijzigd, ComboBox1.SelectedIndexChanged
-
+        dgvLeerlingen.DataSource = leerlingLijst
+        With dgvLeerlingen
+            .Columns("ID").DisplayIndex = 0
+            .Columns("VoorNaam").DisplayIndex = 1
+            .Columns("FamilieNaam").DisplayIndex = 2
+            .Columns("GeboorteDatum").DisplayIndex = 3
+            .Columns("InschrijvingsDatum").DisplayIndex = 4
+            .Columns("OS_ASS").DisplayIndex = 5
+            .Columns("OS_ADHD").DisplayIndex = 6
+            .Columns("OS_GTS").DisplayIndex = 7
+            .Columns("LS_Dyslexie").DisplayIndex = 8
+            .Columns("LS_Dysorthografie").DisplayIndex = 9
+            .Columns("LS_Dyscalculie").DisplayIndex = 10
+            .Columns("LS_Andere").DisplayIndex = 11
+            .Columns("Leervoorsprong").DisplayIndex = 12
+            .Columns("Pestdader").DisplayIndex = 13
+            .Columns("Pestslachtoffer").DisplayIndex = 14
+            .Columns("Anderstalig").DisplayIndex = 15
+            .Columns("Bisser").DisplayIndex = 16
+            .Columns("Actief").DisplayIndex = 17
+        End With
     End Sub
 
     Private Sub btnLeerlingVerwijderen_Click(sender As System.Object, e As System.EventArgs) Handles btnLeerlingVerwijderen.Click

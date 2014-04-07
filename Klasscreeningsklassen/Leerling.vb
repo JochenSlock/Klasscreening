@@ -1,8 +1,6 @@
 ﻿Public Class Leerling
-    Public Property ID As Integer
-    Public Property VoorNaam As String
-    Public Property FamilieNaam As String
-    Public Property GeboorteDatum As Date
+
+    Inherits Persoon
     Public Property InschrijvingsDatum As Date
     Public Property OS_ASS As Boolean
     Public Property OS_ADHD As Boolean
@@ -23,7 +21,7 @@
         ByVal ls_dyscalculie As Boolean, ByVal ls_andere As String, _
         ByVal leervoorsprong As Boolean, ByVal pestdader As Boolean, ByVal pestslachtoffer As Boolean, _
         ByVal anderstalig As Boolean, ByVal bisser As Boolean, ByVal actief As String)
-        Me.ID = ID
+        Me.ID = id
         Me.VoorNaam = voornaam
         Me.FamilieNaam = familienaam
         Me.GeboorteDatum = geboortedatum
