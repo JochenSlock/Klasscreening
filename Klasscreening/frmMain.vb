@@ -104,11 +104,14 @@ Public Class frmMain
         Join leerling In leerlingenLijst On klas.Deelnemer Equals leerling.ID
         Select New Verhuis(leerling, klasNaamLijst.Where(Function(x) x.ID = klas.Naam).First)
 
-
-        'Dim test = openstaandeLijst.ToList
-
         Dim frmKlassen As New FrmKlassen(openstaandeLijst.ToList, klasNaamLijst, leerlingenLijst, leerkrachtenLijst)
         frmKlassen.MdiParent = Me
         frmKlassen.Show()
+    End Sub
+
+    Private Sub tmiNieuweKlasscreening_Click(sender As System.Object, e As System.EventArgs) Handles tmiNieuweKlasscreening.Click
+        Dim frmKlasscreening As New FrmKlasscreening()
+        frmKlasscreening.MdiParent = Me
+        frmKlasscreening.Show()
     End Sub
 End Class
