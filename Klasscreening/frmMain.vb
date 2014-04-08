@@ -48,42 +48,12 @@ Public Class frmMain
     End Sub
 
     Public Sub EnableAlleMenuItems()
-
-        tmiActiefstatus.Enabled = True
-        tmiAfsluiten.Enabled = True
-        tmiBestand.Enabled = True
-        tmiKlasnamen.Enabled = True
-        tmiLeerkracht.Enabled = True
-        tmiLeerling.Enabled = True
-        tmiInloggen.Enabled = True
-        tmiUitloggen.Enabled = True
-        tmiLokaal.Enabled = True
-        tmiNieuweKlasscreening.Enabled = True
-        tmiOnderhoud.Enabled = True
-        tmiOpenKlasscreening.Enabled = True
-        tmiOpties.Enabled = True
-        tmiSamenstellenKlassen.Enabled = True
-        tmiToevoegenWijzigen.Enabled = True
-
+        Dim frmKlasscreening As New FrmKlasscreening()
+        frmKlasscreening.MdiParent = Me
+        frmKlasscreening.Show()
     End Sub
 
     Public Sub InitialiseerAlleMenuItems()
-
-        tmiActiefstatus.Enabled = False
-        tmiAfsluiten.Enabled = True
-        tmiBestand.Enabled = True
-        tmiKlasnamen.Enabled = False
-        tmiLeerkracht.Enabled = False
-        tmiLeerling.Enabled = False
-        tmiInloggen.Enabled = True
-        tmiUitloggen.Enabled = False
-        tmiLokaal.Enabled = False
-        tmiNieuweKlasscreening.Enabled = False
-        tmiOnderhoud.Enabled = True
-        tmiOpenKlasscreening.Enabled = False
-        tmiOpties.Enabled = True
-        tmiSamenstellenKlassen.Enabled = False
-        tmiToevoegenWijzigen.Enabled = True
 
     End Sub
 
@@ -109,9 +79,13 @@ Public Class frmMain
         frmKlassen.Show()
     End Sub
 
-    Private Sub tmiNieuweKlasscreening_Click(sender As System.Object, e As System.EventArgs) Handles tmiNieuweKlasscreening.Click
+    Private Sub NieuwToolStripMenuItem_Click(sender As System.Object, e As System.EventArgs) Handles NieuwToolStripMenuItem.Click
         Dim frmKlasscreening As New FrmKlasscreening()
         frmKlasscreening.MdiParent = Me
         frmKlasscreening.Show()
+    End Sub
+
+    Private Sub LokaalToolStripMenuItem_Click(sender As System.Object, e As System.EventArgs) Handles LokaalToolStripMenuItem.Click
+
     End Sub
 End Class

@@ -25,7 +25,8 @@ Partial Class frmMain
         Me.mnuMenuStrip = New System.Windows.Forms.MenuStrip()
         Me.tmiBestand = New System.Windows.Forms.ToolStripMenuItem()
         Me.tmiNieuweKlasscreening = New System.Windows.Forms.ToolStripMenuItem()
-        Me.tmiOpenKlasscreening = New System.Windows.Forms.ToolStripMenuItem()
+        Me.NieuwToolStripMenuItem = New System.Windows.Forms.ToolStripMenuItem()
+        Me.OpenToolStripMenuItem = New System.Windows.Forms.ToolStripMenuItem()
         Me.ToolStripSeparator2 = New System.Windows.Forms.ToolStripSeparator()
         Me.tmiInloggen = New System.Windows.Forms.ToolStripMenuItem()
         Me.tmiUitloggen = New System.Windows.Forms.ToolStripMenuItem()
@@ -35,11 +36,15 @@ Partial Class frmMain
         Me.tmiToevoegenWijzigen = New System.Windows.Forms.ToolStripMenuItem()
         Me.tmiLeerling = New System.Windows.Forms.ToolStripMenuItem()
         Me.tmiLeerkracht = New System.Windows.Forms.ToolStripMenuItem()
-        Me.tmiLokaal = New System.Windows.Forms.ToolStripMenuItem()
         Me.ToolStripSeparator5 = New System.Windows.Forms.ToolStripSeparator()
         Me.tmiOnderhoud = New System.Windows.Forms.ToolStripMenuItem()
         Me.tmiActiefstatus = New System.Windows.Forms.ToolStripMenuItem()
         Me.tmiKlasnamen = New System.Windows.Forms.ToolStripMenuItem()
+        Me.LokaalToolStripMenuItem = New System.Windows.Forms.ToolStripMenuItem()
+        Me.GebruikersToolStripMenuItem = New System.Windows.Forms.ToolStripMenuItem()
+        Me.GebruikersrechtenToolStripMenuItem = New System.Windows.Forms.ToolStripMenuItem()
+        Me.KlasscreeningsperiodesToolStripMenuItem = New System.Windows.Forms.ToolStripMenuItem()
+        Me.SchooljaarToolStripMenuItem = New System.Windows.Forms.ToolStripMenuItem()
         Me.ToolStripSeparator4 = New System.Windows.Forms.ToolStripSeparator()
         Me.tmiSamenstellenKlassen = New System.Windows.Forms.ToolStripMenuItem()
         Me.staStatusStrip = New System.Windows.Forms.StatusStrip()
@@ -59,49 +64,56 @@ Partial Class frmMain
         '
         'tmiBestand
         '
-        Me.tmiBestand.DropDownItems.AddRange(New System.Windows.Forms.ToolStripItem() {Me.tmiNieuweKlasscreening, Me.tmiOpenKlasscreening, Me.ToolStripSeparator2, Me.tmiInloggen, Me.tmiUitloggen, Me.ToolStripSeparator3, Me.tmiAfsluiten})
+        Me.tmiBestand.DropDownItems.AddRange(New System.Windows.Forms.ToolStripItem() {Me.tmiNieuweKlasscreening, Me.ToolStripSeparator2, Me.tmiInloggen, Me.tmiUitloggen, Me.ToolStripSeparator3, Me.tmiAfsluiten})
         Me.tmiBestand.Name = "tmiBestand"
         Me.tmiBestand.Size = New System.Drawing.Size(61, 20)
         Me.tmiBestand.Text = "Bestand"
         '
         'tmiNieuweKlasscreening
         '
+        Me.tmiNieuweKlasscreening.DropDownItems.AddRange(New System.Windows.Forms.ToolStripItem() {Me.NieuwToolStripMenuItem, Me.OpenToolStripMenuItem})
         Me.tmiNieuweKlasscreening.Name = "tmiNieuweKlasscreening"
-        Me.tmiNieuweKlasscreening.Size = New System.Drawing.Size(188, 22)
-        Me.tmiNieuweKlasscreening.Text = "Nieuwe klasscreening"
+        Me.tmiNieuweKlasscreening.Size = New System.Drawing.Size(152, 22)
+        Me.tmiNieuweKlasscreening.Text = "Klasscreening"
         '
-        'tmiOpenKlasscreening
+        'NieuwToolStripMenuItem
         '
-        Me.tmiOpenKlasscreening.Name = "tmiOpenKlasscreening"
-        Me.tmiOpenKlasscreening.Size = New System.Drawing.Size(188, 22)
-        Me.tmiOpenKlasscreening.Text = "Open klasscreening"
+        Me.NieuwToolStripMenuItem.Name = "NieuwToolStripMenuItem"
+        Me.NieuwToolStripMenuItem.Size = New System.Drawing.Size(152, 22)
+        Me.NieuwToolStripMenuItem.Text = "Nieuw"
+        '
+        'OpenToolStripMenuItem
+        '
+        Me.OpenToolStripMenuItem.Name = "OpenToolStripMenuItem"
+        Me.OpenToolStripMenuItem.Size = New System.Drawing.Size(152, 22)
+        Me.OpenToolStripMenuItem.Text = "Open"
         '
         'ToolStripSeparator2
         '
         Me.ToolStripSeparator2.Name = "ToolStripSeparator2"
-        Me.ToolStripSeparator2.Size = New System.Drawing.Size(185, 6)
+        Me.ToolStripSeparator2.Size = New System.Drawing.Size(149, 6)
         '
         'tmiInloggen
         '
         Me.tmiInloggen.Name = "tmiInloggen"
-        Me.tmiInloggen.Size = New System.Drawing.Size(188, 22)
+        Me.tmiInloggen.Size = New System.Drawing.Size(152, 22)
         Me.tmiInloggen.Text = "Inloggen"
         '
         'tmiUitloggen
         '
         Me.tmiUitloggen.Name = "tmiUitloggen"
-        Me.tmiUitloggen.Size = New System.Drawing.Size(188, 22)
+        Me.tmiUitloggen.Size = New System.Drawing.Size(152, 22)
         Me.tmiUitloggen.Text = "Uitloggen"
         '
         'ToolStripSeparator3
         '
         Me.ToolStripSeparator3.Name = "ToolStripSeparator3"
-        Me.ToolStripSeparator3.Size = New System.Drawing.Size(185, 6)
+        Me.ToolStripSeparator3.Size = New System.Drawing.Size(149, 6)
         '
         'tmiAfsluiten
         '
         Me.tmiAfsluiten.Name = "tmiAfsluiten"
-        Me.tmiAfsluiten.Size = New System.Drawing.Size(188, 22)
+        Me.tmiAfsluiten.Size = New System.Drawing.Size(152, 22)
         Me.tmiAfsluiten.Text = "Afsluiten"
         '
         'tmiOpties
@@ -113,7 +125,7 @@ Partial Class frmMain
         '
         'tmiToevoegenWijzigen
         '
-        Me.tmiToevoegenWijzigen.DropDownItems.AddRange(New System.Windows.Forms.ToolStripItem() {Me.tmiLeerling, Me.tmiLeerkracht, Me.tmiLokaal, Me.ToolStripSeparator5, Me.tmiOnderhoud})
+        Me.tmiToevoegenWijzigen.DropDownItems.AddRange(New System.Windows.Forms.ToolStripItem() {Me.tmiLeerling, Me.tmiLeerkracht, Me.ToolStripSeparator5, Me.tmiOnderhoud})
         Me.tmiToevoegenWijzigen.Name = "tmiToevoegenWijzigen"
         Me.tmiToevoegenWijzigen.Size = New System.Drawing.Size(189, 22)
         Me.tmiToevoegenWijzigen.Text = "Toevoegen / Wijzigen"
@@ -121,44 +133,68 @@ Partial Class frmMain
         'tmiLeerling
         '
         Me.tmiLeerling.Name = "tmiLeerling"
-        Me.tmiLeerling.Size = New System.Drawing.Size(135, 22)
+        Me.tmiLeerling.Size = New System.Drawing.Size(152, 22)
         Me.tmiLeerling.Text = "Leerling"
         '
         'tmiLeerkracht
         '
         Me.tmiLeerkracht.Name = "tmiLeerkracht"
-        Me.tmiLeerkracht.Size = New System.Drawing.Size(135, 22)
+        Me.tmiLeerkracht.Size = New System.Drawing.Size(152, 22)
         Me.tmiLeerkracht.Text = "Leerkracht"
-        '
-        'tmiLokaal
-        '
-        Me.tmiLokaal.Name = "tmiLokaal"
-        Me.tmiLokaal.Size = New System.Drawing.Size(135, 22)
-        Me.tmiLokaal.Text = "Lokaal"
         '
         'ToolStripSeparator5
         '
         Me.ToolStripSeparator5.Name = "ToolStripSeparator5"
-        Me.ToolStripSeparator5.Size = New System.Drawing.Size(132, 6)
+        Me.ToolStripSeparator5.Size = New System.Drawing.Size(149, 6)
         '
         'tmiOnderhoud
         '
-        Me.tmiOnderhoud.DropDownItems.AddRange(New System.Windows.Forms.ToolStripItem() {Me.tmiActiefstatus, Me.tmiKlasnamen})
+        Me.tmiOnderhoud.DropDownItems.AddRange(New System.Windows.Forms.ToolStripItem() {Me.tmiActiefstatus, Me.tmiKlasnamen, Me.LokaalToolStripMenuItem, Me.GebruikersToolStripMenuItem, Me.GebruikersrechtenToolStripMenuItem, Me.KlasscreeningsperiodesToolStripMenuItem, Me.SchooljaarToolStripMenuItem})
         Me.tmiOnderhoud.Name = "tmiOnderhoud"
-        Me.tmiOnderhoud.Size = New System.Drawing.Size(135, 22)
+        Me.tmiOnderhoud.Size = New System.Drawing.Size(152, 22)
         Me.tmiOnderhoud.Text = "Onderhoud"
         '
         'tmiActiefstatus
         '
         Me.tmiActiefstatus.Name = "tmiActiefstatus"
-        Me.tmiActiefstatus.Size = New System.Drawing.Size(136, 22)
+        Me.tmiActiefstatus.Size = New System.Drawing.Size(196, 22)
         Me.tmiActiefstatus.Text = "Actiefstatus"
         '
         'tmiKlasnamen
         '
         Me.tmiKlasnamen.Name = "tmiKlasnamen"
-        Me.tmiKlasnamen.Size = New System.Drawing.Size(136, 22)
+        Me.tmiKlasnamen.Size = New System.Drawing.Size(196, 22)
         Me.tmiKlasnamen.Text = "Klasnamen"
+        '
+        'LokaalToolStripMenuItem
+        '
+        Me.LokaalToolStripMenuItem.Name = "LokaalToolStripMenuItem"
+        Me.LokaalToolStripMenuItem.Size = New System.Drawing.Size(196, 22)
+        Me.LokaalToolStripMenuItem.Text = "Lokaal"
+        '
+        'GebruikersToolStripMenuItem
+        '
+        Me.GebruikersToolStripMenuItem.Name = "GebruikersToolStripMenuItem"
+        Me.GebruikersToolStripMenuItem.Size = New System.Drawing.Size(196, 22)
+        Me.GebruikersToolStripMenuItem.Text = "Gebruikers"
+        '
+        'GebruikersrechtenToolStripMenuItem
+        '
+        Me.GebruikersrechtenToolStripMenuItem.Name = "GebruikersrechtenToolStripMenuItem"
+        Me.GebruikersrechtenToolStripMenuItem.Size = New System.Drawing.Size(196, 22)
+        Me.GebruikersrechtenToolStripMenuItem.Text = "Gebruikersrechten"
+        '
+        'KlasscreeningsperiodesToolStripMenuItem
+        '
+        Me.KlasscreeningsperiodesToolStripMenuItem.Name = "KlasscreeningsperiodesToolStripMenuItem"
+        Me.KlasscreeningsperiodesToolStripMenuItem.Size = New System.Drawing.Size(196, 22)
+        Me.KlasscreeningsperiodesToolStripMenuItem.Text = "Klasscreeningsperiodes"
+        '
+        'SchooljaarToolStripMenuItem
+        '
+        Me.SchooljaarToolStripMenuItem.Name = "SchooljaarToolStripMenuItem"
+        Me.SchooljaarToolStripMenuItem.Size = New System.Drawing.Size(196, 22)
+        Me.SchooljaarToolStripMenuItem.Text = "Schooljaar"
         '
         'ToolStripSeparator4
         '
@@ -213,14 +249,12 @@ Partial Class frmMain
     Friend WithEvents tmiInloggen As System.Windows.Forms.ToolStripMenuItem
     Friend WithEvents tmiAfsluiten As System.Windows.Forms.ToolStripMenuItem
     Friend WithEvents tmiNieuweKlasscreening As System.Windows.Forms.ToolStripMenuItem
-    Friend WithEvents tmiOpenKlasscreening As System.Windows.Forms.ToolStripMenuItem
     Friend WithEvents ToolStripSeparator2 As System.Windows.Forms.ToolStripSeparator
     Friend WithEvents ToolStripSeparator3 As System.Windows.Forms.ToolStripSeparator
     Friend WithEvents tmiOpties As System.Windows.Forms.ToolStripMenuItem
     Friend WithEvents tmiToevoegenWijzigen As System.Windows.Forms.ToolStripMenuItem
     Friend WithEvents tmiLeerling As System.Windows.Forms.ToolStripMenuItem
     Friend WithEvents tmiLeerkracht As System.Windows.Forms.ToolStripMenuItem
-    Friend WithEvents tmiLokaal As System.Windows.Forms.ToolStripMenuItem
     Friend WithEvents ToolStripSeparator5 As System.Windows.Forms.ToolStripSeparator
     Friend WithEvents tmiOnderhoud As System.Windows.Forms.ToolStripMenuItem
     Friend WithEvents tmiActiefstatus As System.Windows.Forms.ToolStripMenuItem
@@ -229,4 +263,11 @@ Partial Class frmMain
     Friend WithEvents tmiSamenstellenKlassen As System.Windows.Forms.ToolStripMenuItem
     Friend WithEvents tmiUitloggen As System.Windows.Forms.ToolStripMenuItem
     Friend WithEvents tslUserName As System.Windows.Forms.ToolStripStatusLabel
+    Friend WithEvents LokaalToolStripMenuItem As System.Windows.Forms.ToolStripMenuItem
+    Friend WithEvents GebruikersToolStripMenuItem As System.Windows.Forms.ToolStripMenuItem
+    Friend WithEvents GebruikersrechtenToolStripMenuItem As System.Windows.Forms.ToolStripMenuItem
+    Friend WithEvents KlasscreeningsperiodesToolStripMenuItem As System.Windows.Forms.ToolStripMenuItem
+    Friend WithEvents SchooljaarToolStripMenuItem As System.Windows.Forms.ToolStripMenuItem
+    Friend WithEvents NieuwToolStripMenuItem As System.Windows.Forms.ToolStripMenuItem
+    Friend WithEvents OpenToolStripMenuItem As System.Windows.Forms.ToolStripMenuItem
 End Class
