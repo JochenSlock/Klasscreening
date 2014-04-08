@@ -107,7 +107,7 @@ Partial Class FrmKlassen
         '
         'btnBewaar
         '
-        Me.btnBewaar.Location = New System.Drawing.Point(223, 668)
+        Me.btnBewaar.Location = New System.Drawing.Point(787, 668)
         Me.btnBewaar.Name = "btnBewaar"
         Me.btnBewaar.Size = New System.Drawing.Size(236, 55)
         Me.btnBewaar.TabIndex = 8
@@ -116,7 +116,7 @@ Partial Class FrmKlassen
         '
         'btnVerwerp
         '
-        Me.btnVerwerp.Location = New System.Drawing.Point(477, 668)
+        Me.btnVerwerp.Location = New System.Drawing.Point(1041, 668)
         Me.btnVerwerp.Name = "btnVerwerp"
         Me.btnVerwerp.Size = New System.Drawing.Size(236, 55)
         Me.btnVerwerp.TabIndex = 9

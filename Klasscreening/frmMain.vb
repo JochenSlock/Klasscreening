@@ -102,7 +102,10 @@ Public Class frmMain
         Dim openstaandeLijst = From klas In klassenLijst
         Where klas.StopTijdStip Is Nothing
         Join leerling In leerlingenLijst On klas.Deelnemer Equals leerling.ID
-        Select New Verhuis(leerling.ID, klas.Naam)
+        Select New Verhuis(leerling, klasNaamLijst.Where(Function(x) x.ID = klas.Naam).First)
+
+
+        'Dim test = openstaandeLijst.ToList
 
         Dim frmKlassen As New FrmKlassen(openstaandeLijst.ToList, klasNaamLijst, leerlingenLijst, leerkrachtenLijst)
         frmKlassen.MdiParent = Me

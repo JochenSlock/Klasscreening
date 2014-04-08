@@ -27,7 +27,7 @@ Public Class FrmKlassen
         lstVan.Items.Clear()
 
         Dim van = From verhuisElement In _verhuisLijst
-                  Where verhuisElement.NaarKlasNr = CType(cboVan.SelectedItem, KlasNaam).ID
+                  Where verhuisElement.NaarKlas.ID = CType(cboVan.SelectedItem, KlasNaam).ID
                   Select verhuisElement
 
         lstVan.Items.AddRange(van.ToArray)
@@ -36,7 +36,7 @@ Public Class FrmKlassen
         lstNaar.Items.Clear()
 
         Dim naar = From verhuisElement In _verhuisLijst
-                  Where verhuisElement.NaarKlasNr = CType(cboNaar.SelectedItem, KlasNaam).ID
+                  Where verhuisElement.NaarKlas.ID = CType(cboNaar.SelectedItem, KlasNaam).ID
                   Select verhuisElement
 
         lstNaar.Items.AddRange(naar.ToArray)
@@ -50,15 +50,12 @@ Public Class FrmKlassen
             verhuisLijst.Add(CType(item, Verhuis))
         Next
 
-        Dim elementen = From verhuisElement In _verhuisLijst
-                    Where verhuisLijst.Contains(verhuisElement)
-                    Select verhuisElement
-
-        For Each verhuisElement In elementen
-            verhuisElement.NaarKlasNr = CType(cboNaar.SelectedItem, KlasNaam).ID
+        For Each verhuisElement In verhuisLijst
+            verhuisElement.NaarKlas = CType(cboNaar.SelectedItem, KlasNaam)
         Next verhuisElement
 
- updateAlleLijsten
+        updateAlleLijsten()
+
     End Sub
 
     Private Sub btnEnkeleNaarVan_Click(sender As System.Object, e As System.EventArgs) Handles btnEnkeleNaarVan.Click
@@ -68,15 +65,11 @@ Public Class FrmKlassen
             verhuisLijst.Add(CType(item, Verhuis))
         Next
 
-        Dim elementen = From verhuisElement In _verhuisLijst
-                    Where verhuisLijst.Contains(verhuisElement)
-                    Select verhuisElement
-
-        For Each verhuisElement In elementen
-            verhuisElement.NaarKlasNr = cboVan.SelectedItem
+        For Each verhuisElement In verhuisLijst
+            verhuisElement.NaarKlas = CType(cboVan.SelectedItem, KlasNaam)
         Next verhuisElement
 
- updateAlleLijsten
+        updateAlleLijsten()
     End Sub
 
     Private Sub btnAlleVanNaar_Click(sender As System.Object, e As System.EventArgs) Handles btnAlleVanNaar.Click
@@ -86,12 +79,8 @@ Public Class FrmKlassen
             verhuisLijst.Add(CType(item, Verhuis))
         Next
 
-        Dim elementen = From verhuisElement In _verhuisLijst
-                    Where verhuisLijst.Contains(verhuisElement)
-                    Select verhuisElement
-
-        For Each verhuisElement In elementen
-            verhuisElement.NaarKlasNr = CType(cboNaar.SelectedItem, KlasNaam).ID
+        For Each verhuisElement In verhuisLijst
+            verhuisElement.NaarKlas = CType(cboNaar.SelectedItem, KlasNaam)
         Next verhuisElement
 
         updateAlleLijsten()
@@ -104,15 +93,11 @@ Public Class FrmKlassen
             verhuisLijst.Add(CType(item, Verhuis))
         Next
 
-        Dim elementen = From verhuisElement In _verhuisLijst
-                    Where verhuisLijst.Contains(verhuisElement)
-                    Select verhuisElement
-
-        For Each verhuisElement In elementen
-            verhuisElement.NaarKlasNr = CType(cboVan.SelectedItem, KlasNaam).ID
+        For Each verhuisElement In verhuisLijst
+            verhuisElement.NaarKlas = CType(cboVan.SelectedItem, KlasNaam)
         Next verhuisElement
 
-updateAlleLijsten
+        updateAlleLijsten()
     End Sub
     Private Sub updateAlleLijsten()
         updateNaarLijst()
@@ -124,10 +109,8 @@ updateAlleLijsten
         lstGewijzigde.Items.Clear()
 
         Dim gewijzigde = From verhuisde In _verhuisLijst
-                         Where verhuisde.NaarKlasNr <> verhuisde.VanKlasNr
-                         Join lln In _leerlingenLijst On verhuisde.persoonID Equals lln.ID
-                         Join klas In _klasNaamLijst On verhuisde.NaarKlasNr Equals klas.ID
-                         Select String.Format("{0}, {1} : {2} --> {3}", lln.FamilieNaam, lln.VoorNaam, _klasNaamLijst.Where(Function(x) x.ID = verhuisde.VanKlasNr), _klasNaamLijst.Where(Function(x) x.ID = verhuisde.NaarKlasNr))
+                         Where verhuisde.NaarKlas.ID <> verhuisde.VanKlas.ID
+                         Select verhuisde.ToStringGewijzigd(_klasNaamLijst)
 
         lstGewijzigde.Items.AddRange(gewijzigde.ToArray)
     End Sub
